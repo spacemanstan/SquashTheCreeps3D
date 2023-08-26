@@ -9,7 +9,7 @@ Featuring
  - Movement animation with alternating speed! (woah, very cool!)
  - Squashing
 
-**Attribution**:
-Background Music: "House In a Forest Loop" by HorrorPen, CC-BY 3.0. Source: OpenGameArt
+## Credits
+`art/House In a Forest Loop.ogg` Copyright &copy; 2012 [HorrorPen](https://opengameart.org/users/horrorpen), [CC-BY 3.0: Attribution](http://creativecommons.org/licenses/by/3.0/). Source: https://opengameart.org/content/loop-house-in-a-forest
 
 ![Example Screenshot](ExampleScreenshot.png)
