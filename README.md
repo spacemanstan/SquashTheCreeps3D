@@ -8,3 +8,8 @@ Featuring
  - Procedural gameplay
  - Movement animation with alternating speed! (woah, very cool!)
  - Squashing
+
+**Attribution**:
+Background Music: "House In a Forest Loop" by HorrorPen, CC-BY 3.0. Source: OpenGameArt
+
+![Example Screenshot](ExampleScreenshot.png)
