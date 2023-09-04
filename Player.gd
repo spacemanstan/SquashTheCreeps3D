@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+# Emitted when player is hit by mob
+signal hit
+
 # fast as fuck boi
 @export var speed = 13 # m/s
 
@@ -86,3 +89,11 @@ func _physics_process(delta):
 # re-enable jump on delay timer
 func _on_jump_delay_timeout():
 	can_jump = true
+
+
+func _on_mob_detector_body_entered(body):
+	die()
+
+func die():
+	hit.emit()
+	queue_free()
