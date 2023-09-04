@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -19,6 +19,7 @@ func _on_mob_t_imer_timeout():
 
 	# sample random position on spawn path 
 	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
+	
 	# random offset, progress ratio is a part of PathFollow3D
 	mob_spawn_location.progress_ratio = randf()
 

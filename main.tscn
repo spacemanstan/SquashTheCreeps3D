@@ -18,7 +18,7 @@ material = SubResource("StandardMaterial3D_qwtj8")
 
 [sub_resource type="Curve3D" id="Curve3D_4bimu"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -14.0876, 0, -16.8696, 0, 0, 0, 0, 0, 0, 13.8508, 0, -16.8696, 0, 0, 0, 0, 0, 0, 14.0876, 0, 16.9879, 0, 0, 0, 0, 0, 0, -14.0876, 0, 16.9879, 0, 0, 0, 0, 0, 0, -14.0876, 0, -16.8696),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -14.0843, 0, -17.0531, 0, 0, 0, 0, 0, 0, 13.9463, 0, -16.915, 0, 0, 0, 0, 0, 0, 14.0843, 0, 17.0531, 0, 0, 0, 0, 0, 0, -14.0843, 0, 17.0531, 0, 0, 0, 0, 0, 0, -14.0843, 0, -17.0531),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -29,6 +29,8 @@ mob_scene = ExtResource("2_1jdky")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_pkja4")
@@ -37,7 +39,7 @@ shape = SubResource("BoxShape3D_pkja4")
 mesh = SubResource("BoxMesh_4ssgw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.5424, 0)
+transform = Transform3D(0.707107, 0.5, 0.5, 0, -0.707107, 0.707107, 0.707107, -0.5, -0.5, 0, 7, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_w0xaj")]
@@ -51,6 +53,7 @@ size = 19.0
 far = 2000.0
 
 [node name="Cylinders" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="TopLeft" type="MeshInstance3D" parent="Cylinders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -17)
@@ -69,10 +72,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 17)
 mesh = SubResource("CylinderMesh_cy0cq")
 
 [node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 curve = SubResource("Curve3D_4bimu")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.0876, 0, -16.8696)
+transform = Transform3D(-0.0049261, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.0049261, -14.0843, 0.9, -17.0531)
+v_offset = 0.9
 
 [node name="MobTImer" type="Timer" parent="."]
 wait_time = 0.5
