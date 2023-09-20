@@ -5,7 +5,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$UI/Retry.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +24,7 @@ func _on_mob_t_imer_timeout():
 	mob_spawn_location.progress_ratio = randf()
 
 	# get player pos
-	var player_position = $Player.position if $Player != null else  Vector3.ZERO
+	var player_position = $Player.position if $Player != null else Vector3.ZERO
 
 	# initialize mob
 	mob.initialize(mob_spawn_location.position, player_position)
@@ -32,9 +32,18 @@ func _on_mob_t_imer_timeout():
 	# add mob as child
 	add_child(mob)
 
+	# connect mob to score via squash to update score
+	mob.squashed.connect($UI/ScoreLabel._on_mob_squashed.bind())
+
 
 func _on_player_hit():
 	$MobTimerWindDown.start()
 
 func _on_mob_timer_wind_down_timeout():
 	$MobTImer.stop()
+	$UI/Retry.show()
+
+func _input(event):
+	if event is InputEventKey and $UI/Retry.visible:
+		# This restarts the current scene.
+		get_tree().reload_current_scene()
