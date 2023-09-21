@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx0q4vl57br7j"]
+[gd_scene load_steps=12 format=3 uid="uid://bx0q4vl57br7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7jrin"]
 [ext_resource type="PackedScene" uid="uid://u02b4fwov0gt" path="res://player.tscn" id="1_w0xaj"]
 [ext_resource type="PackedScene" uid="uid://da5n5vp1x5d4n" path="res://mob.tscn" id="2_1jdky"]
+[ext_resource type="FontFile" uid="uid://dwfdyns612wkb" path="res://fonts/Montserrat-Medium.ttf" id="4_xkipr"]
+[ext_resource type="Script" path="res://ScoreLabel.gd" id="5_tawua"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pkja4"]
 size = Vector3(60, 2, 60)
@@ -22,6 +24,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="Theme" id="Theme_le721"]
+default_font = ExtResource("4_xkipr")
+default_font_size = 22
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7jrin")
@@ -85,6 +91,56 @@ autostart = true
 
 [node name="MobTimerWindDown" type="Timer" parent="."]
 one_shot = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_le721")
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 15.0
+offset_right = 44.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
+horizontal_alignment = 1
+script = ExtResource("5_tawua")
+
+[node name="Retry" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="RetryLabel" type="Label" parent="UI/Retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -31.0
+offset_right = 79.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTImer" to="." method="_on_mob_t_imer_timeout"]
