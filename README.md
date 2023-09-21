@@ -1,5 +1,8 @@
 # Squash the Creeps 3D
-A repo for following Godot's "Your First 3D Game" tutorial
+A repo for following Godot's "Your First 3D Game" tutorial with my own twists
+
+![Gameplay Demo](SquashTheCreepsDemo.gif)
+
 ### Squash Creeps
 Featuring 
  - 3D coordinates & jumping mechanic
@@ -11,5 +14,3 @@ Featuring
 
 ## Credits
 `art/House In a Forest Loop.ogg` Copyright &copy; 2012 [HorrorPen](https://opengameart.org/users/horrorpen), [CC-BY 3.0: Attribution](http://creativecommons.org/licenses/by/3.0/). Source: https://opengameart.org/content/loop-house-in-a-forest
-
-![Example Screenshot](ExampleScreenshot.png)
