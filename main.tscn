@@ -1,16 +1,29 @@
-[gd_scene load_steps=12 format=3 uid="uid://bx0q4vl57br7j"]
+[gd_scene load_steps=16 format=3 uid="uid://bx0q4vl57br7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7jrin"]
 [ext_resource type="PackedScene" uid="uid://u02b4fwov0gt" path="res://player.tscn" id="1_w0xaj"]
 [ext_resource type="PackedScene" uid="uid://da5n5vp1x5d4n" path="res://mob.tscn" id="2_1jdky"]
+[ext_resource type="Script" path="res://wavetest.gd" id="3_4jvys"]
 [ext_resource type="FontFile" uid="uid://dwfdyns612wkb" path="res://fonts/Montserrat-Medium.ttf" id="4_xkipr"]
 [ext_resource type="Script" path="res://ScoreLabel.gd" id="5_tawua"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pkja4"]
 size = Vector3(60, 2, 60)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81d5h"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.160784, 0.482353, 1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_4ssgw"]
+material = SubResource("StandardMaterial3D_81d5h")
 size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phehg"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.270588, 0.368627, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j7x6e"]
+material = SubResource("StandardMaterial3D_phehg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwtj8"]
 albedo_color = Color(1, 0.505882, 0.14902, 1)
@@ -43,6 +56,21 @@ shape = SubResource("BoxShape3D_pkja4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_4ssgw")
+
+[node name="wavetest" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(2.59808, -1.46405e-07, 0.5, -1.5, -5.46392e-07, 0.866025, 1.75686e-08, -25, -2.18557e-08, -15, 1, 0)
+mesh = SubResource("CylinderMesh_j7x6e")
+script = ExtResource("3_4jvys")
+
+[node name="wavetest2" type="MeshInstance3D" parent="Ground/wavetest"]
+transform = Transform3D(1, 7.10543e-14, -7.45058e-08, 4.44089e-16, 1, -7.21645e-16, 5.96046e-07, 5.68434e-14, 1, -0.296412, 5.43368e-10, -0.859807)
+mesh = SubResource("CylinderMesh_j7x6e")
+skeleton = NodePath("../..")
+
+[node name="wavetest3" type="MeshInstance3D" parent="Ground/wavetest"]
+transform = Transform3D(1, 1.1724e-13, -7.45058e-08, 8.32667e-16, 1, -7.21645e-16, 5.96046e-07, 1.7053e-13, 1, -0.703826, 1.37871e-09, -2.14282)
+mesh = SubResource("CylinderMesh_j7x6e")
+skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, 0.5, 0, -0.707107, 0.707107, 0.707107, -0.5, -0.5, 0, 7, 0)
