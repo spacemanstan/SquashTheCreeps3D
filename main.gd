@@ -24,7 +24,10 @@ func _on_mob_t_imer_timeout():
 	mob_spawn_location.progress_ratio = randf()
 
 	# get player pos
-	var player_position = $Player.position if $Player != null else Vector3.ZERO
+	var player_position = Vector3.ZERO
+	
+	if $Player != null:
+		player_position = $Player.position 
 
 	# initialize mob
 	mob.initialize(mob_spawn_location.position, player_position)
